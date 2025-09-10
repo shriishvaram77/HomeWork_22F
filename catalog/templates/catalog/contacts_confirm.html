@@ -1,0 +1,16 @@
+<!-- product_confirm_delete.html -->
+{% extends 'catalog/base.html' %}
+
+{% block title %}Сообщение отправлено{% endblock %}
+
+{% block content %}
+{% include 'catalog/header.html' %}
+
+<h2>Сообщение отправлено</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-danger">Подтвердить</button>
+    <a href="{% url 'catalog:home' %}" class="btn btn-primary">Отменить</a>
+</form>
+{% endblock %}
