@@ -22,6 +22,7 @@ class Product(models.Model):
     created_at = models.DateField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateField(auto_now=True, verbose_name='Дата последнего изменения')
     photo = models.ImageField(upload_to='photos/', verbose_name='Изображение')
+    is_available = models.BooleanField(default=True, verbose_name='В наличии')
 
     def __str__(self):
         return f'{self.product_name} {self.product_description} {self.category} {self.price}'
