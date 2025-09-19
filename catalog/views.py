@@ -1,3 +1,4 @@
+from .forms import ProductForm
 from .models import Product
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView
@@ -12,9 +13,9 @@ class ProductListView(ListView):
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = ['product_name', 'price', 'product_description', 'category']
+    form_class = ProductForm
     template_name = 'catalog/product_form.html'
-    success_url = reverse_lazy('catalog:product_details')
+    success_url = reverse_lazy('catalog:products')
 
 
 class ProductDetailView(DetailView):
@@ -25,7 +26,7 @@ class ProductDetailView(DetailView):
 
 class ProductUpdateView(UpdateView):
     model = Product
-    fields = ['product_name', 'price', 'product_description', 'category']
+    form_class = ProductForm
     template_name = 'catalog/product_form.html'
     success_url = reverse_lazy('catalog:products')
 
