@@ -1,4 +1,6 @@
 from django import forms
+from django.forms import BooleanField
+
 from .models import Category, Product
 from django.core.exceptions import ValidationError
 
@@ -12,6 +14,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['product_name', 'product_description', 'category', 'price', 'is_available']
+
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
